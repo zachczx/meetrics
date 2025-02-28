@@ -10,6 +10,9 @@
 		snrAsstDir: number;
 		dyDir: number;
 		dir: number;
+		mos: number;
+		sms: number;
+		min: number;
 	}
 
 	interface SalaryRange {
@@ -20,6 +23,9 @@
 		snrAsstDir: { min: number; max: number };
 		dyDir: { min: number; max: number };
 		dir: { min: number; max: number };
+		mos: { min: number; max: number };
+		sms: { min: number; max: number };
+		min: { min: number; max: number };
 	}
 
 	let count: Count = $state({
@@ -29,12 +35,16 @@
 		asstDir: 0,
 		snrAsstDir: 0,
 		dyDir: 0,
-		dir: 0
+		dir: 0,
+		mos: 0,
+		sms: 0,
+		min: 0
 	});
 
 	let toggleMinMax: 'min' | 'max' | 'avg' = $state('min');
 
 	// https://blog.seedly.sg/civil-service-salary/
+	// https://www.psd.gov.sg/files/handout-3---composition-of-revised-salaries-for-politcal-appointment-holders-under-the-new-framework.pdf
 	const salariesMonthly: SalaryRange = {
 		asstMgr: { min: 3300, max: 6250 },
 		mgr: { min: 3300, max: 6250 },
@@ -42,7 +52,10 @@
 		asstDir: { min: 4800, max: 7700 },
 		snrAsstDir: { min: 5900, max: 9700 },
 		dyDir: { min: 7600, max: 12300 },
-		dir: { min: 16700, max: 22700 }
+		dir: { min: 16700, max: 22700 },
+		mos: { min: 64166.67, max: 64166.67 },
+		sms: { min: 77916.67, max: 77916.67 },
+		min: { min: 110000, max: 110000 }
 	};
 
 	let meetingCost = $derived.by(() => {
